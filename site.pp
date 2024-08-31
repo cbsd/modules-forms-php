@@ -25,14 +25,14 @@ generate_hieradata()
 				php_version)
 					package_prefix_ver=$( echo $php_version | tr -d "\." )
 					# package_prefix_ver depends on php_version
-					sed -i '' -Ees:#package_prefix_ver#:${package_prefix_ver}:g ${tmp_common_yaml}
+					sed -i '' -Ees^#package_prefix_ver#^${package_prefix_ver}^g ${tmp_common_yaml}
 					;;
 				package_prefix_ver)
 					# depends on php_version
 					continue
 					;;
 			esac
-			sed -i '' -Ees:${_tpl}:${_val}:g ${tmp_common_yaml}
+			sed -i '' -Ees^${_tpl}^${_val}^g ${tmp_common_yaml}
 		done
 		cat ${tmp_common_yaml}
 	else
